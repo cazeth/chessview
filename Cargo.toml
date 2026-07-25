@@ -1,0 +1,21 @@
+[package]
+name = "chessview"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
+resolver = "3"
+
+[features]
+# Real-image piece rendering (Sixel / Kitty / iTerm2, with a half-block
+# fallback). Needs rustc >= 1.86 and a graphics-capable terminal. Build with:
+#   cargo run --features images
+images = ["dep:ratatui-image", "dep:image"]
+
+[dependencies]
+tudi = "0.2"
+thiserror = "2"
+ratatui = "0.29"
+miette = { version = "7", features = ["fancy"] }
+dirs = "6"
+ratatui-image = { version = "9", default-features = false, optional = true }
+image = { version = "0.25", optional = true, default-features = false, features = ["png"] }
